@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Steps</title>
+  </head>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #step1,
+    #step2,
+    #step3 {
+      max-width: 550px;
+      margin: 1.5em auto;
+      text-align: center;
+      padding: 1.2em;
+    }
+
+    button {
+      padding: 0.7em 1.7em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-group {
+      padding: 1.4em;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 5em 1.1em;
+    }
+    footer p {
+      color: #444;
+      line-height: 0.4em;
+    }
+  </style>
+  <body>
+    <!-- Step 1 -->
+    <div id="step1">
+      <h1>Step 1</h1>
+      <p>This is step 1</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolor
+        eos nemo debitis vitae et distinctio officiis optio fuga sunt, incidunt,
+        totam numquam commodi placeat blanditiis voluptas exercitationem esse
+        natus?
+      </p>
+      <div class="button-group">
+        <button onclick="goToStep2();">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="hide" id="step2">
+      <h1>Step 2</h1>
+      <p>This is step 2</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+        libero perferendis beatae. Sapiente perferendis expedita eius
+        praesentium esse quas quos in laudantium ex? Quae, dignissimos! Ullam
+        quis recusandae veritatis aperiam?
+      </p>
+
+      <div class="button-group">
+        <button onclick="goToStep1()">Previous</button>
+        <button onclick="goToStep3();">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="hide" id="step3">
+      <h1>Step 3</h1>
+      <p>This is step 3</p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti qui
+        voluptate quaerat delectus ut minima similique exercitationem commodi
+        iste, molestias incidunt alias tenetur, repellendus quas voluptates,
+        tempora eos illum beatae.
+      </p>
+      <div class="button-group">
+        <button onclick="goToStep2();">Previous</button>
+        <button>Submit</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Vanilla JavaScript Steps</p>
+      <p>&copy; Copyright 2020</p>
+    </footer>
+
+    <!-- Where the magic happens... -->
+    <script>
+      if (typeof window !== undefined) {
+        // @Reusable functions:
+        const $ = (element) => document.querySelector(element);
+        const show = (element) => $(element).classList.remove("hide");
+        const hide = (element) => $(element).classList.add("hide");
+
+        const goToStep = (fn1, fn2, fn3) => {
+          fn1("#step1");
+          fn2("#step2");
+          fn3("#step3");
+        };
+
+        // @Step methods - as many as you want :=)
+        function goToStep1() {
+          goToStep(show, hide, hide);
+        }
+
+        function goToStep2() {
+          goToStep(hide, show, hide);
+        }
+
+        function goToStep3() {
+          goToStep(hide, hide, show);
+        }
+      }
+    </script>
+  </body>
+</html>
